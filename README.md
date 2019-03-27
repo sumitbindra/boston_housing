@@ -1,2 +1,2 @@
 # boston_housing
-Boston housing project
+The folder contains required files for the Boston house prediction model. 

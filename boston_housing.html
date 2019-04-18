@@ -2,7 +2,7 @@
 <html>
 <head><meta charset="utf-8" />
 
-<title>boston_housing</title>
+<title>boston_housing_v2</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13142,7 +13142,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -13214,23 +13214,23 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Minimum price of the data</span>
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Maximum price of the data</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Mean price of the data</span>
-<span class="n">mean_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Median price of the data</span>
-<span class="n">median_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">median_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Standard deviation of prices of the data</span>
-<span class="n">std_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">std_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># Show the calculated statistics</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Statistics for Boston housing dataset:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -13261,7 +13261,7 @@ Minimum price: $105000.0
 Maximum price: $1024800.0
 Mean price: $454342.9447852761
 Median price $438900.0
-Standard deviation of prices: $165340.27765266786
+Standard deviation of prices: $165171.13154429477
 </pre>
 </div>
 </div>
@@ -13332,7 +13332,7 @@ Standard deviation of prices: $165340.27765266786
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Import &#39;r2_score&#39;</span>
@@ -13394,7 +13394,7 @@ Standard deviation of prices: $165340.27765266786
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Calculate the performance of this model</span>
@@ -13450,7 +13450,13 @@ Standard deviation of prices: $165340.27765266786
 <ul>
 <li><p>Yes, I consider this model to have successfully captured the variation of the target variables.</p>
 </li>
-<li><p>This is because the R2 score of the model is 0.923 which means that this model, with its current coefficients and feature variables, describes 92.3% of the variation in the dependent variable.</p>
+<li><p>R2 score is a measure of variation in the dependent variable that can be described by the independent variable. R2 score of 1 means that the independent variable can perfectly predict the dependent variable and R2 score of 0 means that the independent variable can predict no part of the dependent variable.</p>
+</li>
+<li><p>Thus an R2 score of 0.923 which means that this model, with its current coefficients and feature variables, describes 92.3% of the variation in the dependent variable.</p>
+</li>
+<li><p>This also means that 7.7% variation in the independent variable cannot be described by this model.</p>
+</li>
+<li><p>It is possible that even with this high R2 score, the model is not very good but we have to look at the residuals to make that determination. If the residuals show any type of bias then the data has to be investigated in more detail.</p>
 </li>
 </ul>
 <p>**</p>
@@ -13477,7 +13483,7 @@ Standard deviation of prices: $165340.27765266786
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Import &#39;train_test_split&#39;</span>
@@ -13529,7 +13535,23 @@ Standard deviation of prices: $165340.27765266786
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>**Answer:</p>
 <p>The benefit of splitting the data into training and testing subets for a learning algorithm lies in the propencity of an overly simple or complex model to severly under or over fit the data, respectively.</p>
-<p>For example, if we define a model as predicting all values of Y as a mean of existing values of Y (a simple model), without a testing dataset we will not be able to test the accuracy of this model before implementation. The training dataset should generally contain 60-80 of the data and the testing dataset should contain the remaining 20-40 data. If the training dataaset contains too many observations, the model will overfit the data but if it contains too few observations then the resulting model will underfit the data. Both of these models will perform poorly on a testing dataset that does not represent the original data well.</p>
+<p>Any model can fit the data in three ways:</p>
+<ul>
+<li>Under fit</li>
+<li>Over fit</li>
+<li>Good fit</li>
+</ul>
+<p>An under fitted model does a poor job of explaning the variation and an over fitted model described the data used for its development too perfectly. It is easy to say if the model is under fitted as its accuracy score wrt to the preparation data will be low but it is nearly impossible to state if the model is overfitting if the data is not split into training and testing datasets.</p>
+<p>A training datset is used to learn the patterns of the data and the testing dataset is used to test the accuracy of the final model. The results of the accuracy score of the testing dataset CANNOT be used in fine tunening the model thus the training dataset is futher split into training and validation datasets.</p>
+<ul>
+<li><p>Training dataset - Is the set of data points that are used to estimate the intial parameters or coefficients of the model</p>
+</li>
+<li><p>Validation dataset - It contains points that are not part of the training dataset. The accuracy score of the model developed using the training dataset on the validation data is used to fine tune the parameters and select features. A final model is developed that provides the highest accuracy score on the validation dataset.</p>
+</li>
+<li><p>Testing dataset - It containts points that are neither present in the trianing or validation dataset. The final model that is developed using the validation dataset is applied on the testing dataset to get the overall and reported accuracy score of the developed model.</p>
+</li>
+</ul>
+<p>A model is said to be a good fit if it performs well on the training, validation and testing datasets. Using this method we can make sure that a models that simply learns the patterns of the training dataset is not selected as the final model because its accuracy score will be low on the testing dataset.</p>
 <p>With the availibility of training and testing dataset, we can develop a model using the training dataset and test the accuracy of the model on the testing dataset. The testing dataset should not be used in feature selection or parameter estimation.</p>
 <p>**</p>
 
@@ -13734,9 +13756,11 @@ Think about the pros and cons of adding more training points based on if the tra
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>**Answer:</p>
-<p>The grid search technique searches over all combinations of suggested values of parameters (aka hyper-parameters) used in a learning alrogithm to find the best set of hyper-parameters that can be used to predict the dependent variable.</p>
-<p>For example, in a Support Vector Machine model with RBF kernel, the user can perform a grid search over two hyper-parameters - gamma and C. The user can specify all values of gamma and C to be tested and the grid search technique will run models will all possible combinations of gamma and C and return the model with the best F score. These hyper-parameters can then be used in optimizing the learning algorithm. 
-**</p>
+<p>In general, a prediction model is solving a problem by minimizing the error between the predicted and observed values. This requires calculating the values of feature coefficients which can in turn depend on some hyper-parameters. For example, in decision trees, the structure of the final tree will depend on the node depth or minimum split samples etc. Thus in order to find the best values of model parameters or feature coefficients one has to also find the best possible values of the hyper-paremters. This is where grid-search comes in.</p>
+<p>The grid search technique searches over all combinations of suggested values of hyper-parameters used in a learning algorithm to find the best set of hyper-parameters that can be used to predict the dependent variable. Since it is impossible to find the global best values of the hyper-parameters (infinite computation time), the inputs to a gridserach are a bunch of values for each hyper-parameter. For example, in case of SVM kernel can be -- polynomial or RBF -- gamma can be -- 1, 5, 10, 100, 200 -- and c can be -- 0.01, 0.1, 1 , 2, 5.</p>
+<p>The reason why it is called grid search is because the algorithm arranges each unique combination these values in a grid and runs the suggested model using those values and as an output, for each set of values, stores the values of the error function (accuracy score etc).</p>
+<p>The accuracy score (or any other performance metrics) is required and used to find the best set of hyper-parameter values.</p>
+<p>**</p>
 
 </div>
 </div>
@@ -14001,6 +14025,14 @@ Predicted selling price for Client 3&#39;s home: $938,053.85
 <li><p>Client 3's home preice should be $940,000.</p>
 </li>
 </ul>
+<p>Based on our overall dataset we can see that in Boston:</p>
+<p>Minimum price of a house is $105,000
+Maximum price of a house is $1,024,800
+Mean price of a house is $454,342</p>
+<p>Client 2's house with 4 rooms, 32% poverty and 22:1 students to teacher ratio is the worst of the three houses but is still over the minimum prices of a house in Boston. Client 3's house with 8 rooms, low poverty and 12:1 students to teacher ratio is the best of the three and is close to the maximum value of a house in Boston. Client 1's house is in the middle and is close to the mean price of a house in Boston.</p>
+<p>We can see that the predictions from our model also make a lot of sense overall. As the number of rooms increase from 4 to 5 to 8  in a house, the price of the house also incereases from $230k to $405k to $940k. This is to be expected as bigger house will sell of a higher price.</p>
+<p>One would also expect that the value of the home will decrease as the poverty levels of the neighborhood increases. For our clients, as poverty percent increases from 3 to 17 to 32, the price of the house decreases from $940k to $405k to $230k.</p>
+<p>Similarly, as the student to teacher ratio decreaes, the price of the house increases since there are more teacher to pay attention to the students thus increasing the attractiveness of the neighborhood and increasing the value of the houses in it. As the ratio moves from 22 to 15 to 12, the value of the house increases from $940k to $405k to $230k.</p>
 <p>These prices seem to resonably match the values of respective features as:</p>
 
 <pre><code>- The price of the house incereases with an increase in the number of rooms
